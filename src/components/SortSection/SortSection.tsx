@@ -1,5 +1,6 @@
 import {Box, Flex, Select, Tabs} from '@gravity-ui/uikit';
 import React from 'react';
+import './sortSelection.scss';
 
 export const SortSection = () => {
     const [activeTab, setActiveTab] = React.useState('first');
