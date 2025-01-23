@@ -2,6 +2,7 @@ import {AsideHeader, LogoProps, MenuItem} from '@gravity-ui/navigation';
 import {Box, Container, Flex} from '@gravity-ui/uikit';
 import './main.scss';
 import {Header} from '../Header/Header';
+import {SortSection} from '../SortSection/SortSection';
 
 export const Main = () => {
     const logo: LogoProps = {
@@ -13,7 +14,6 @@ export const Main = () => {
         {
             id: '1',
             title: 'Dashboard',
-            // icon: IconProps['./public/icons/search.svg'],
             iconQa: './public/icons/search.svg',
         },
         {
@@ -42,19 +42,21 @@ export const Main = () => {
             title: 'Settings',
         },
     ];
+
     return (
         <Container maxWidth={'xxl'}>
             <Box>
                 <Flex space={6}>
                     <AsideHeader
-                        className="icon"
+                        className="bg"
                         logo={logo}
                         compact={false}
                         hideCollapseButton={true}
                         menuItems={menu}
                     />
-                    <Box>
+                    <Box className="mainBox">
                         <Header />
+                        <SortSection />
                     </Box>
                 </Flex>
             </Box>

@@ -2,7 +2,23 @@
     --gn-aside-header-background-color: #ffffff;
 }
 
-.icon {
-    height: 30px;
-    width: 121px;
+.mainBox {
+    padding-top: 24px;
+}
+
+.selectBox {
+    gap: 24px;
+}
+
+.select {
+    color:#A5A5A8;
+    text-decoration: #ffff;
+}
+
+.tabs {
+    --g-tabs-item-gap: 10px;
+    --g-tabs-border-width: 317px:
+    text-decoration: none;
+    padding-left: 24px;
+    padding-top: 24px;
 }
