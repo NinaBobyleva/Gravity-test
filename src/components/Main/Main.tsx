@@ -3,6 +3,7 @@ import {Box, Container, Flex} from '@gravity-ui/uikit';
 import './main.scss';
 import {Header} from '../Header/Header';
 import {SortSection} from '../SortSection/SortSection';
+import {Cards} from '../Cards/Cards';
 
 export const Main = () => {
     const logo: LogoProps = {
@@ -57,6 +58,7 @@ export const Main = () => {
                     <Box className="mainBox">
                         <Header />
                         <SortSection />
+                        <Cards />
                     </Box>
                 </Flex>
             </Box>
