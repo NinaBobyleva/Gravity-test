@@ -6,7 +6,7 @@ export const SortSection = () => {
     // const [activeTab, setActiveTab] = React.useState('first');
     return (
         <Box>
-            <Flex justifyContent={'space-between'} alignItems={'center'}>
+            <Flex justifyContent={'space-between'}>
                 <Tabs
                     activeTab={'first'}
                     // onSelectTab={(tabId) => setActiveTab(tabId)}
@@ -19,26 +19,34 @@ export const SortSection = () => {
                     ]}
                 />
                 <Flex className="selectBox" alignItems={'end'}>
-                    <Select
-                        className="select"
-                        size="l"
-                        placeholder="New"
-                        label="Sort by"
-                        options={[
-                            {value: 'val_1', content: 'New'},
-                            {value: 'val_2', content: 'Old'},
-                        ]}
-                    />
-                    <Select
-                        className="select"
-                        size="l"
-                        label="Language"
-                        placeholder="En"
-                        options={[
-                            {value: 'val_1', content: 'En'},
-                            {value: 'val_2', content: 'Ru'},
-                        ]}
-                    />
+                    <Flex alignItems={'center'}>
+                        <p className="textSelect">Sort by</p>
+                        <Select
+                            className="select"
+                            placeholder="New"
+                            popupClassName="popupSelect"
+                            view="clear"
+                            width={70}
+                            options={[
+                                {value: 'val_1', content: 'New'},
+                                {value: 'val_2', content: 'Old'},
+                            ]}
+                        />
+                    </Flex>
+                    <Flex alignItems={'center'}>
+                        <p className="textSelect">Language</p>
+                        <Select
+                            className="select"
+                            placeholder="En"
+                            popupClassName="popupSelect"
+                            view="clear"
+                            width={60}
+                            options={[
+                                {value: 'val_1', content: 'En'},
+                                {value: 'val_2', content: 'Ru'},
+                            ]}
+                        />
+                    </Flex>
                 </Flex>
             </Flex>
         </Box>
