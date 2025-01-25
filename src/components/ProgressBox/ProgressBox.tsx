@@ -3,7 +3,7 @@ import './progressBox.scss';
 
 export const ProgressBox = ({duration, sessions}: {duration: string; sessions: string}) => {
     return (
-        <Flex space={4} className="progressBox">
+        <Flex space={8} className="progressBox">
             <Box height={30}>
                 <Flex alignItems={'center'} space={1}>
                     <Box>

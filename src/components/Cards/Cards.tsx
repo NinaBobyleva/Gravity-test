@@ -3,6 +3,7 @@ import {Box, Card, Flex} from '@gravity-ui/uikit';
 import './cards.scss';
 import {UserData} from '../UserData/UserData';
 import {ProgressBox} from '../ProgressBox/ProgressBox';
+import {LikeBox} from '../LikeBox/LikeBox';
 
 export const Cards = () => {
     const dataCards = [
@@ -61,7 +62,7 @@ export const Cards = () => {
         height: '102px',
     };
     return (
-        <Box className="cardsBox">
+        <Box className="wrapper">
             <Flex direction={'column'} space={2}>
                 {dataCards.map((el) => (
                     <Card
@@ -72,15 +73,18 @@ export const Cards = () => {
                         type="container"
                         key={el.id}
                     >
-                        <Flex>
+                        <Flex justifyContent={'space-between'}>
                             <Box>
-                                <Flex space={6}>
+                                <Flex className="cardsBox">
                                     <UserData nik={el.nik} userData={el.userData} />
                                     <Box width={224}>
-                                        <h3 className="desk">{el.description}</h3>
+                                        <span className="desk">{el.description}</span>
                                     </Box>
                                     <ProgressBox duration={el.duration} sessions={el.sessions} />
                                 </Flex>
+                            </Box>
+                            <Box>
+                                <LikeBox />
                             </Box>
                         </Flex>
                     </Card>
