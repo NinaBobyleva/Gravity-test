@@ -1,15 +1,15 @@
 import {Box, Flex, Select, Tabs} from '@gravity-ui/uikit';
-import React from 'react';
+// import React from 'react';
 import './sortSelection.scss';
 
 export const SortSection = () => {
-    const [activeTab, setActiveTab] = React.useState('first');
+    // const [activeTab, setActiveTab] = React.useState('first');
     return (
         <Box>
             <Flex justifyContent={'space-between'} alignItems={'center'}>
                 <Tabs
-                    activeTab={activeTab}
-                    onSelectTab={(tabId) => setActiveTab(tabId)}
+                    activeTab={'first'}
+                    // onSelectTab={(tabId) => setActiveTab(tabId)}
                     size="xl"
                     className="tabs"
                     items={[
@@ -19,7 +19,6 @@ export const SortSection = () => {
                     ]}
                 />
                 <Flex className="selectBox" alignItems={'end'}>
-                    {/* <Text variant="body-1">Sort by</Text> */}
                     <Select
                         className="select"
                         size="l"

@@ -59,6 +59,9 @@ export const Main = () => {
                         <Header />
                         <SortSection />
                         <Cards />
+                        <Flex justifyContent={'center'} className="paginationBox">
+                            {/* <Pagination page={1} pageSize={100} total={1000} /> */}
+                        </Flex>
                     </Box>
                 </Flex>
             </Box>
