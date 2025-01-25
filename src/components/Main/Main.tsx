@@ -4,8 +4,12 @@ import './main.scss';
 import {Header} from '../Header/Header';
 import {SortSection} from '../SortSection/SortSection';
 import {Cards} from '../Cards/Cards';
+import {useState} from 'react';
+import {Pagination} from '../Pagination/Pagination';
 
 export const Main = () => {
+    const [perPage] = useState<number>(10);
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const logo: LogoProps = {
         text: '',
         iconSrc: './public/icons/logo.png',
@@ -44,6 +48,11 @@ export const Main = () => {
         },
     ];
 
+    // const [state, setState] = React.useState({page: 1, pageSize: 10});
+
+    // const handleUpdate: PaginationProps['onUpdate'] = (page, pageSize) =>
+    //     setState((prevState) => ({...prevState, page, pageSize}));
+
     return (
         <Container maxWidth={'xxl'}>
             <Box>
@@ -60,7 +69,20 @@ export const Main = () => {
                         <SortSection />
                         <Cards />
                         <Flex justifyContent={'center'} className="paginationBox">
-                            {/* <Pagination page={1} pageSize={100} total={1000} /> */}
+                            <Pagination
+                                perPage={perPage}
+                                currentPage={currentPage}
+                                setCurrentPage={setCurrentPage}
+                                count={12000}
+                            />
+                            {/* <Pagination item={1} size={1} className={''} /> */}
+                            {/* <Pagination
+                                // pageSizeOptions={[100]}
+                                onUpdate={handleUpdate}
+                                page={state.page}
+                                pageSize={state.pageSize}
+                                total={1000}
+                            /> */}
                         </Flex>
                     </Box>
                 </Flex>

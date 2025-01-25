@@ -20,6 +20,6 @@
       "@/*": ["./src/*"]
   }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/utils/createPages.js"],
   "exclude": ["node_modules"]
 }
