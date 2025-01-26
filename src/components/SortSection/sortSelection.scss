@@ -1,0 +1,37 @@
+.tabs {
+    --g-tabs-item-gap: 20px;
+    --g-tabs-border-width: 317px: text-decoration: none;
+    padding-left: 24px;
+    padding-top: 24px;
+}
+
+.selectBox {
+    gap: 24px;
+}
+
+.textSelect {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+    color: #a5a5a8;
+}
+
+.select {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: left;
+    color: #000;
+    appearance: none;
+    outline: none;
+    border-color: #fff;
+    &_placeholder {
+        color: #000;
+    }
+}
+
+.popupSelect {
+    color: #000;
+    font-weight: 700;
+}
