@@ -1,7 +1,7 @@
 import {Box, Flex} from '@gravity-ui/uikit';
 import './progressBox.scss';
 
-export const ProgressBox = ({duration, sessions}: {duration: string; sessions: string}) => {
+export const ProgressBox = ({duration, sessions}: {duration: number; sessions: number}) => {
     return (
         <Flex space={8} className="progressBox">
             <Box height={30}>
@@ -12,7 +12,7 @@ export const ProgressBox = ({duration, sessions}: {duration: string; sessions: s
                     <Box>
                         <Flex direction={'column'}>
                             <span className="subtitle">Duration</span>
-                            <span className="text">{duration}</span>
+                            <span className="text">{duration} week</span>
                         </Flex>
                     </Box>
                 </Flex>
@@ -25,7 +25,7 @@ export const ProgressBox = ({duration, sessions}: {duration: string; sessions: s
                     <Box>
                         <Flex direction={'column'}>
                             <span className="subtitle">Sessions</span>
-                            <span className="text">{sessions}</span>
+                            <span className="text">{sessions} per/week</span>
                         </Flex>
                     </Box>
                 </Flex>

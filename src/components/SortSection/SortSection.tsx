@@ -2,8 +2,17 @@ import {Box, Flex, Select, Tabs} from '@gravity-ui/uikit';
 // import React from 'react';
 import './sortSelection.scss';
 
-export const SortSection = () => {
+export const SortSection = ({
+    setSelect,
+}: {
+    setSelect: React.Dispatch<React.SetStateAction<string[]>>;
+}) => {
     // const [activeTab, setActiveTab] = React.useState('first');
+
+    const handleUpdate = (value: string[]) => {
+        setSelect(value);
+    };
+
     return (
         <Box>
             <Flex justifyContent={'space-between'}>
@@ -28,9 +37,10 @@ export const SortSection = () => {
                             view="clear"
                             width={70}
                             options={[
-                                {value: 'val_1', content: 'New'},
-                                {value: 'val_2', content: 'Old'},
+                                {value: 'New', content: 'New'},
+                                {value: 'Old', content: 'Old'},
                             ]}
+                            onUpdate={handleUpdate}
                         />
                     </Flex>
                     <Flex alignItems={'center'}>
