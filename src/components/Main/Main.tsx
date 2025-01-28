@@ -25,11 +25,12 @@ export const Main = () => {
     const [programs, setPrograms] = useState<CardsData[]>([]);
     const [select, setSelect] = useState<string[]>([]);
     const [listPrograms, setListPrograms] = useState<CardsData[]>([]);
+    const [inputSearch, setInputSearch] = useState('');
 
     const cardsData: CardsData[] = [
         {
             id: 1,
-            title: 'Attentive Iguana',
+            title: 'Sarah Conor',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 1,
@@ -38,7 +39,7 @@ export const Main = () => {
         },
         {
             id: 2,
-            title: 'Attentive Iguana',
+            title: 'Tony Stark',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 3,
@@ -47,7 +48,7 @@ export const Main = () => {
         },
         {
             id: 3,
-            title: 'Attentive Iguana',
+            title: 'Bruce Banner',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 7,
@@ -56,7 +57,7 @@ export const Main = () => {
         },
         {
             id: 4,
-            title: 'Attentive Iguana',
+            title: 'Pitter Parker',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 5,
@@ -65,11 +66,7 @@ export const Main = () => {
         },
     ];
 
-    useEffect(() => {
-        setPrograms(cardsData);
-        setListPrograms(cardsData);
-        setCount(cardsData.length);
-    }, []);
+    useEffect(() => {}, []);
 
     const style = {
         width: '196px',
@@ -90,14 +87,37 @@ export const Main = () => {
     // const durationSort = cardsData.find((el) => el.duration_weeks);
 
     useEffect(() => {
-        if (select[0] === 'New') {
-            const newPrograms = programs.toSorted((a, b) => a.duration_weeks - b.duration_weeks);
-            setListPrograms(newPrograms);
-        } else if (select[0] === 'Old') {
-            const oldPrograms = programs.toSorted((a, b) => b.duration_weeks - a.duration_weeks);
-            setListPrograms(oldPrograms);
-        }
-    }, [select]);
+        setPrograms(cardsData);
+        setListPrograms(cardsData);
+        setCount(cardsData.length);
+        const handleSorting = () => {
+            if (select[0] === 'New') {
+                const newPrograms = programs.toSorted(
+                    (a, b) => a.duration_weeks - b.duration_weeks,
+                );
+                setListPrograms(newPrograms);
+            } else if (select[0] === 'Old') {
+                const oldPrograms = programs.toSorted(
+                    (a, b) => b.duration_weeks - a.duration_weeks,
+                );
+                setListPrograms(oldPrograms);
+            }
+        };
+
+        const handleSearching = () => {
+            const searchString = programs.filter((el) =>
+                el.title.toLowerCase().includes(inputSearch.toLowerCase()),
+            );
+            if (inputSearch) {
+                setListPrograms(searchString);
+            } else {
+                setListPrograms(cardsData);
+            }
+        };
+
+        handleSearching();
+        handleSorting();
+    }, [select, inputSearch]);
     return (
         <Container maxWidth={'xxl'}>
             <Box>
@@ -141,7 +161,7 @@ export const Main = () => {
                         />
                     </Card>
                     <Box className="mainBox">
-                        <Header />
+                        <Header setInputSearch={setInputSearch} />
                         <SortSection setSelect={setSelect} />
                         <Cards programs={listPrograms} />
                         <Flex justifyContent={'center'} className="paginationBox">

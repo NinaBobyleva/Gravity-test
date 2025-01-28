@@ -1,10 +1,14 @@
 import {Box, Button, Flex, Icon, Modal, TextInput, spacing} from '@gravity-ui/uikit';
 import {Plus} from '@gravity-ui/icons';
 import './header.scss';
-import React from 'react';
+import {useState} from 'react';
 
-export const Header = () => {
-    const [open, setOpen] = React.useState(false);
+export const Header = ({
+    setInputSearch,
+}: {
+    setInputSearch: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+    const [open, setOpen] = useState(false);
 
     return (
         <Flex width={'1036px'} justifyContent={'space-between'} alignItems={'center'}>
@@ -64,6 +68,7 @@ export const Header = () => {
                     style={{width: 280, height: 42}}
                     size="xl"
                     placeholder="Search programs"
+                    onChange={(e) => setInputSearch(e.target.value)}
                     leftContent={
                         <img
                             className={spacing({ml: 2, mr: 2})}
