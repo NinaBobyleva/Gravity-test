@@ -1,0 +1,51 @@
+export const menuData = [
+    {
+        id: '1',
+        title: 'Dashboard',
+        img: './public/icons/home.svg',
+        isActiveMenuItem: false,
+        isMessage: false,
+    },
+    {
+        id: '2',
+        title: 'Executions',
+        img: './public/icons/line_chart.svg',
+        isActiveMenuItem: false,
+        isMessage: false,
+    },
+    {
+        id: '3',
+        title: 'Workouts',
+        img: './public/icons/stopwatch.svg',
+        isActiveMenuItem: false,
+        isMessage: true,
+    },
+    {
+        id: '4',
+        title: 'Programs',
+        img: './public/icons/bar_chart.svg',
+        isActiveMenuItem: true,
+        isMessage: false,
+    },
+    {
+        id: '5',
+        title: 'Teams',
+        img: './public/icons/users.svg',
+        isActiveMenuItem: false,
+        isMessage: false,
+    },
+    {
+        id: '6',
+        title: 'Players',
+        img: './public/icons/user.svg',
+        isActiveMenuItem: false,
+        isMessage: false,
+    },
+    {
+        id: '7',
+        title: 'Settings',
+        img: './public/icons/settings.svg',
+        isActiveMenuItem: false,
+        isMessage: false,
+    },
+];

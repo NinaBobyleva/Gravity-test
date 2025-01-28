@@ -6,6 +6,7 @@ import {Cards} from '../Cards/Cards';
 import {useEffect, useState} from 'react';
 import {Pagination} from '../Pagination/Pagination';
 import {MenuItem} from '../MenuItem/MenuItem';
+import {menuData} from '../../menuData';
 // import {getPrograms} from '../../api/apiPrograms';
 
 export type CardsData = {
@@ -42,7 +43,7 @@ export const Main = () => {
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 3,
             session_per_week: 3,
-            liked: false,
+            liked: true,
         },
         {
             id: 3,
@@ -76,43 +77,6 @@ export const Main = () => {
         background: '#FFFFFF',
         borderColor: '#FFFFFF',
     };
-    const menu = [
-        {
-            id: '1',
-            title: 'Dashboard',
-            img: './public/icons/home.svg',
-        },
-        {
-            id: '2',
-            title: 'Executions',
-            img: './public/icons/line_chart.svg',
-        },
-        {
-            id: '3',
-            title: 'Workouts',
-            img: './public/icons/stopwatch.svg',
-        },
-        {
-            id: '4',
-            title: 'Programs',
-            img: './public/icons/bar_chart.svg',
-        },
-        {
-            id: '5',
-            title: 'Teams',
-            img: './public/icons/users.svg',
-        },
-        {
-            id: '6',
-            title: 'Players',
-            img: './public/icons/user.svg',
-        },
-        {
-            id: '7',
-            title: 'Settings',
-            img: './public/icons/settings.svg',
-        },
-    ];
 
     // useEffect(() => {
     //     const getProgramsData = async () => {
@@ -140,8 +104,16 @@ export const Main = () => {
                 <Flex space={6}>
                     <Card style={style} className="sideBar">
                         <img className="sideBarCard" src="./public/icons/logo.png" alt="#" />
-                        {menu.map((el) => (
-                            <MenuItem key={el.id} img={el.img} title={el.title} />
+                        {menuData.map((el) => (
+                            <Box className="sideBarMenuItem">
+                                <MenuItem
+                                    key={el.id}
+                                    img={el.img}
+                                    title={el.title}
+                                    isActiveMenuItem={el.isActiveMenuItem}
+                                    isMessage={el.isMessage}
+                                />
+                            </Box>
                         ))}
                         <Box className="sideBarProgressBox">
                             <p className="sideBarProgressTitle">Games left</p>
@@ -156,10 +128,16 @@ export const Main = () => {
                         </Box>
                         <User
                             className="sideBarUser"
-                            avatar={{text: 'Charles Darwin', theme: 'brand'}}
+                            avatar={
+                                <img
+                                    className="menuItemIcon"
+                                    src="./public/icons/ava.png"
+                                    alt="#"
+                                />
+                            }
                             name="Priston Berg"
                             description="Coach"
-                            size="l"
+                            size="m"
                         />
                     </Card>
                     <Box className="mainBox">

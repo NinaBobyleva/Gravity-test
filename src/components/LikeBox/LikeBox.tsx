@@ -25,7 +25,3 @@ export const LikeBox = () => {
         </Flex>
     );
 };
-
-{
-    /* <img src="./public/icons/heart.svg" alt="" /> */
-}
