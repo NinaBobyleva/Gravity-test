@@ -41,16 +41,21 @@ export const Pagination = ({
                             />
                         </Box>
                         {pages.map((page) => (
-                            <span key={page} onClick={() => setCurrentPage(page)}>
-                                <span className={currentPage === page ? 'activePage' : 'page'}>
-                                    {page}
-                                </span>
+                            <span
+                                key={page}
+                                onClick={() => setCurrentPage(page)}
+                                className={currentPage === page ? 'activePage' : 'page'}
+                            >
+                                {page}
                             </span>
                         ))}
-                        {currentPage !== pagesCount - 4 && pagesCount > 5 ? (
+                        {pagesCount > 5 && currentPage <= pagesCount - 1 ? (
                             <Flex space={7}>
                                 <span className="page">...</span>
-                                <span className="page"> {pagesCount}</span>
+                                <span onClick={() => setCurrentPage(pagesCount)} className="page">
+                                    {' '}
+                                    {pagesCount}
+                                </span>
                             </Flex>
                         ) : (
                             ''
@@ -58,7 +63,7 @@ export const Pagination = ({
                         <Box>
                             <img
                                 onClick={() =>
-                                    currentPage < pagesCount - 4 && setCurrentPage(currentPage + 1)
+                                    currentPage < pagesCount && setCurrentPage(currentPage + 1)
                                 }
                                 className="right"
                                 src="./public/icons/right.svg"

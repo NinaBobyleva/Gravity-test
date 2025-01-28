@@ -6,8 +6,8 @@ type CreatePagesProp = {
 
 export const createPages = ({pages, pagesCount, currentPage}: CreatePagesProp) => {
     if (pagesCount > 5) {
-        if (currentPage > 1) {
-            for (let i = currentPage; i <= currentPage + 4; i++) {
+        if (currentPage > 5) {
+            for (let i = currentPage - 4; i <= currentPage + 1; i++) {
                 pages.push(i);
                 if (i === pagesCount) break;
             }
