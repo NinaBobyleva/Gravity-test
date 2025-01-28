@@ -1,3 +1,10 @@
+.modal {
+    width: 400px;
+    height: 250px;
+    --g-modal-border-radius: 20px;
+    padding-top: 50px;
+}
+
 .input {
     --g-text-input-background-color: #ffffff;
     --g-text-input-border-color: #ffffff;

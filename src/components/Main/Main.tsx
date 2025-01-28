@@ -10,6 +10,7 @@ import {MenuItem} from '../MenuItem/MenuItem';
 
 export type CardsData = {
     id: number;
+    title: string;
     description: string;
     duration_weeks: number;
     session_per_week: number;
@@ -17,8 +18,9 @@ export type CardsData = {
 };
 
 export const Main = () => {
-    const [perPage] = useState<number>(10);
+    const [perPage, setPerPage] = useState<number>(20);
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [count, setCount] = useState(0);
     const [programs, setPrograms] = useState<CardsData[]>([]);
     const [select, setSelect] = useState<string[]>([]);
     const [listPrograms, setListPrograms] = useState<CardsData[]>([]);
@@ -26,6 +28,7 @@ export const Main = () => {
     const cardsData: CardsData[] = [
         {
             id: 1,
+            title: 'Attentive Iguana',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 1,
@@ -34,6 +37,7 @@ export const Main = () => {
         },
         {
             id: 2,
+            title: 'Attentive Iguana',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 3,
@@ -42,6 +46,7 @@ export const Main = () => {
         },
         {
             id: 3,
+            title: 'Attentive Iguana',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 7,
@@ -50,6 +55,7 @@ export const Main = () => {
         },
         {
             id: 4,
+            title: 'Attentive Iguana',
             description:
                 'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
             duration_weeks: 5,
@@ -61,6 +67,7 @@ export const Main = () => {
     useEffect(() => {
         setPrograms(cardsData);
         setListPrograms(cardsData);
+        setCount(cardsData.length);
     }, []);
 
     const style = {
@@ -110,7 +117,7 @@ export const Main = () => {
     // useEffect(() => {
     //     const getProgramsData = async () => {
     //         getPrograms().then((res) => {
-    //             console.log(res);
+    //             // console.log(res);
     //         });
     //     };
 
@@ -164,7 +171,8 @@ export const Main = () => {
                                 perPage={perPage}
                                 currentPage={currentPage}
                                 setCurrentPage={setCurrentPage}
-                                count={12000}
+                                setPerPage={setPerPage}
+                                count={count}
                             />
                         </Flex>
                     </Box>

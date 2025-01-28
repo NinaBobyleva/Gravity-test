@@ -1,65 +1,84 @@
 import {Box, Flex, Select} from '@gravity-ui/uikit';
 import './pagination.scss';
+import {createPages} from '../../utils/createPage';
 
-type FilterBlockProp = {
+type PaginationProp = {
     count: number;
     perPage: number;
     currentPage: number;
     setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+    setPerPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const Pagination = ({perPage, currentPage, count, setCurrentPage}: FilterBlockProp) => {
+export const Pagination = ({
+    perPage,
+    currentPage,
+    count,
+    setCurrentPage,
+    setPerPage,
+}: PaginationProp) => {
     const pages: number[] = [];
 
     const pagesCount = Math.ceil(count / perPage);
 
-    if (pagesCount > 5) {
-        if (currentPage > 5) {
-            for (let i = currentPage - 4; i <= currentPage + 5; i++) {
-                pages.push(i);
-                if (i === pagesCount) break;
-            }
-        } else {
-            for (let i = 1; i <= 5; i++) {
-                pages.push(i);
-                if (i === pagesCount) break;
-            }
-        }
-    } else {
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i);
-        }
-    }
+    createPages({pages, pagesCount, currentPage});
+
+    const handlePaginationSelect = (value: string[]) => {
+        setPerPage(Number(value));
+    };
 
     return (
         <Box>
             <Flex alignItems={'center'}>
                 <Box width={348}>
                     <Flex alignItems={'center'} space={7}>
-                        <img className="left" src="./public/icons/left.svg" alt="#" />
+                        <Box>
+                            <img
+                                onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+                                className="left"
+                                src="./public/icons/left.svg"
+                                alt="#"
+                            />
+                        </Box>
                         {pages.map((page) => (
                             <span key={page} onClick={() => setCurrentPage(page)}>
-                                <span className="page">{page}</span>
+                                <span className={currentPage === page ? 'activePage' : 'page'}>
+                                    {page}
+                                </span>
                             </span>
                         ))}
-                        <span className="page">...</span>
-                        <span className="page">10</span>
-                        <img src="./public/icons/right.svg" alt="#" />
+                        {currentPage !== pagesCount - 4 && pagesCount > 5 ? (
+                            <Flex space={7}>
+                                <span className="page">...</span>
+                                <span className="page"> {pagesCount}</span>
+                            </Flex>
+                        ) : (
+                            ''
+                        )}
+                        <Box>
+                            <img
+                                onClick={() =>
+                                    currentPage < pagesCount - 4 && setCurrentPage(currentPage + 1)
+                                }
+                                className="right"
+                                src="./public/icons/right.svg"
+                                alt="#"
+                            />
+                        </Box>
                     </Flex>
                 </Box>
                 <Box className="perPageBox">
                     <Flex alignItems={'center'}>
                         <p className="showText">Show by</p>
                         <Select
-                            className=""
                             placeholder="20"
-                            popupClassName=""
                             view="clear"
                             width={60}
                             options={[
-                                {value: 'val_1', content: '20'},
-                                {value: 'val_2', content: '30'},
+                                {value: '20', content: '20'},
+                                {value: '30', content: '30'},
                             ]}
+                            onUpdate={handlePaginationSelect}
                         />
                     </Flex>
                 </Box>

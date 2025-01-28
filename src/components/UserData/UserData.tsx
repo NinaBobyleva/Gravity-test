@@ -1,7 +1,7 @@
 import {Box, Card, Flex} from '@gravity-ui/uikit';
 import './userData.scss';
 
-export const UserData = () => {
+export const UserData = ({title}: {title: string}) => {
     const style = {
         width: '69px',
         height: '22px',
@@ -17,7 +17,7 @@ export const UserData = () => {
             <Flex space={2} direction={'column'}>
                 <Box height={24}>
                     <Flex alignItems={'center'} space={2}>
-                        <span className="userTitle">Attentive Iguana</span>
+                        <span className="userTitle">{title}</span>
                         <Card className="public" style={style}>
                             Public
                         </Card>

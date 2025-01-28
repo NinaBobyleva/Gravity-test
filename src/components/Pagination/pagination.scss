@@ -4,6 +4,11 @@
 
 .left {
     padding-top: 5px;
+    cursor: pointer;
+}
+
+.right {
+    cursor: pointer;
 }
 
 .page {
@@ -12,6 +17,14 @@
     line-height: 24px;
     text-align: center;
     color: #a5a5a8;
+    cursor: pointer;
+}
+
+.activePage {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #1a1b1d;
 }
 
 .perPageBox {

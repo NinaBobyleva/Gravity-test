@@ -19,7 +19,7 @@ export const Cards = ({programs}: {programs: CardsData[]}) => {
                         <Flex justifyContent={'space-between'}>
                             <Box>
                                 <Flex className="cardsBox">
-                                    <UserData />
+                                    <UserData title={el.title} />
                                     <Box width={224}>
                                         <span className="desk">{el.description}</span>
                                     </Box>
