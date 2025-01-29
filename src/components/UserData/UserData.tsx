@@ -16,7 +16,7 @@ export const UserData = ({title}: {title: string}) => {
         <Box width={207} className="userDataBox">
             <Flex space={2} direction={'column'}>
                 <Box height={24}>
-                    <Flex alignItems={'center'} space={2}>
+                    <Flex alignItems={'center'} justifyContent={'space-between'} space={2}>
                         <span className="userTitle">{title}</span>
                         <Card className="public" style={style}>
                             Public
