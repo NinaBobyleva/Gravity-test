@@ -1,4 +1,4 @@
-import {Box, Card, Container, Flex, Progress, User} from '@gravity-ui/uikit';
+import {Box, Card, Container, Flex, Loader, Progress, User} from '@gravity-ui/uikit';
 import './main.scss';
 import {Header} from '../Header/Header';
 import {SortSection} from '../SortSection/SortSection';
@@ -19,6 +19,7 @@ export type CardsData = {
 };
 
 export const Main = () => {
+    const [isLoad, setIsLoad] = useState(false);
     const [perPage, setPerPage] = useState<number>(4);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [count, setCount] = useState(0);
@@ -30,11 +31,19 @@ export const Main = () => {
 
     useEffect(() => {
         const getProgramsData = async () => {
-            getPrograms({sort}).then((res) => {
-                setPrograms(res);
-                setListPrograms(res);
-                setCount(res.length);
-            });
+            setIsLoad(true);
+            getPrograms({sort})
+                .then((res) => {
+                    setPrograms(res);
+                    setListPrograms(res);
+                    setCount(res.length);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+                .finally(() => {
+                    setIsLoad(false);
+                });
         };
 
         getProgramsData();
@@ -105,16 +114,24 @@ export const Main = () => {
                     <Box className="mainBox">
                         <Header setInputSearch={setInputSearch} setIsChanged={setIsChanged} />
                         <SortSection setSort={setSort} />
-                        <Cards programs={quantityPerPage} setIsChanged={setIsChanged} />
-                        <Flex justifyContent={'center'} className="paginationBox">
-                            <Pagination
-                                perPage={perPage}
-                                currentPage={currentPage}
-                                setCurrentPage={setCurrentPage}
-                                setPerPage={setPerPage}
-                                count={count}
-                            />
-                        </Flex>
+                        {isLoad ? (
+                            <Flex justifyContent={'center'} alignItems={'center'}>
+                                <Loader className="mainBoxLoad" />
+                            </Flex>
+                        ) : (
+                            <>
+                                <Cards programs={quantityPerPage} setIsChanged={setIsChanged} />
+                                <Flex justifyContent={'center'} className="paginationBox">
+                                    <Pagination
+                                        perPage={perPage}
+                                        currentPage={currentPage}
+                                        setCurrentPage={setCurrentPage}
+                                        setPerPage={setPerPage}
+                                        count={count}
+                                    />
+                                </Flex>
+                            </>
+                        )}
                     </Box>
                 </Flex>
             </Box>
