@@ -13,7 +13,7 @@ export const UserData = ({title}: {title: string}) => {
         border: 'none',
     };
     return (
-        <Box width={205} className="userDataBox">
+        <Box width={207} className="userDataBox">
             <Flex space={2} direction={'column'}>
                 <Box height={24}>
                     <Flex alignItems={'center'} space={2}>

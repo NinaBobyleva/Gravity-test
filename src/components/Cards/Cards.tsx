@@ -5,7 +5,13 @@ import {ProgressBox} from '../ProgressBox/ProgressBox';
 import {LikeBox} from '../LikeBox/LikeBox';
 import {CardsData} from '../Main/Main';
 
-export const Cards = ({programs}: {programs: CardsData[]}) => {
+export const Cards = ({
+    programs,
+    setIsChanged,
+}: {
+    programs: CardsData[];
+    setIsChanged: React.Dispatch<React.SetStateAction<CardsData | null>>;
+}) => {
     const style = {
         width: '1036px',
         height: '102px',
@@ -13,24 +19,34 @@ export const Cards = ({programs}: {programs: CardsData[]}) => {
 
     return (
         <Box className="wrapper">
-            <Flex direction={'column'} space={2}>
+            <Flex direction={'column'} space={2} width={1036} height={432}>
                 {programs.map((el) => (
-                    <Card className="card" style={style} view="clear" type="container" key={el.id}>
+                    <Card
+                        className="cardWrapper"
+                        style={style}
+                        view="clear"
+                        type="container"
+                        key={el.id}
+                    >
                         <Flex justifyContent={'space-between'}>
                             <Box>
                                 <Flex className="cardsBox">
                                     <UserData title={el.title} />
                                     <Box width={224}>
-                                        <span className="desk">{el.description}</span>
+                                        <span className="cardDesk">{el.description}</span>
                                     </Box>
                                     <ProgressBox
                                         duration={el.duration_weeks}
-                                        sessions={el.session_per_week}
+                                        sessions={el.sessions_per_week}
                                     />
                                 </Flex>
                             </Box>
                             <Box>
-                                <LikeBox />
+                                <LikeBox
+                                    id={el.id}
+                                    setIsChanged={setIsChanged}
+                                    isLiked={el.liked}
+                                />
                             </Box>
                         </Flex>
                     </Card>

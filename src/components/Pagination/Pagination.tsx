@@ -76,13 +76,10 @@ export const Pagination = ({
                     <Flex alignItems={'center'}>
                         <p className="showText">Show by</p>
                         <Select
-                            placeholder="20"
+                            placeholder="4"
                             view="clear"
                             width={60}
-                            options={[
-                                {value: '20', content: '20'},
-                                {value: '30', content: '30'},
-                            ]}
+                            options={[{value: '4', content: '4'}]}
                             onUpdate={handlePaginationSelect}
                         />
                     </Flex>

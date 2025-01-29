@@ -1,13 +1,22 @@
 import {Box, Flex, Icon} from '@gravity-ui/uikit';
 import {Heart} from '@gravity-ui/icons';
 import './likeBox.scss';
-import {useState} from 'react';
+import {addLike} from '../../api/apiPrograms';
+import {CardsData} from '../Main/Main';
 
-export const LikeBox = () => {
-    const [isLiked, setIsLiked] = useState(false);
-
+export const LikeBox = ({
+    id,
+    isLiked,
+    setIsChanged,
+}: {
+    id: number;
+    isLiked: boolean;
+    setIsChanged: React.Dispatch<React.SetStateAction<CardsData | null>>;
+}) => {
     const handleLike = () => {
-        setIsLiked((prev) => !prev);
+        addLike({id}).then((data) => {
+            setIsChanged(data);
+        });
     };
     return (
         <Flex direction={'column'} className="likeBox">

@@ -2,15 +2,11 @@ import {Box, Flex, Select, Tabs} from '@gravity-ui/uikit';
 // import React from 'react';
 import './sortSelection.scss';
 
-export const SortSection = ({
-    setSelect,
-}: {
-    setSelect: React.Dispatch<React.SetStateAction<string[]>>;
-}) => {
+export const SortSection = ({setSort}: {setSort: React.Dispatch<React.SetStateAction<string>>}) => {
     // const [activeTab, setActiveTab] = React.useState('first');
 
     const handleUpdate = (value: string[]) => {
-        setSelect(value);
+        setSort(String(value));
     };
 
     return (
@@ -32,13 +28,14 @@ export const SortSection = ({
                         <p className="textSelect">Sort by</p>
                         <Select
                             className="select"
-                            placeholder="New"
+                            placeholder="Title"
                             popupClassName="popupSelect"
                             view="clear"
                             width={70}
                             options={[
-                                {value: 'New', content: 'New'},
-                                {value: 'Old', content: 'Old'},
+                                {value: 'Title', content: 'Title'},
+                                {value: 'Id', content: 'Id'},
+                                {value: 'Duration', content: 'Duration'},
                             ]}
                             onUpdate={handleUpdate}
                         />

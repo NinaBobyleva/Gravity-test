@@ -1,10 +1,51 @@
-const BASE_URL = 'http://85.92.111.183:18181/programs/';
+import {InputPost} from '../components/Header/Header';
 
-export const getPrograms = async () => {
-    const res = await fetch(BASE_URL);
+const BASE_URL = 'https://cors-anywhere.herokuapp.com/http://85.92.111.183:18181/programs/';
+
+export const getPrograms = async ({sort}: {sort: string}) => {
+    let sortResult = '';
+
+    if (sort === 'Title') {
+        sortResult = '?skip=0&limit=30&sort_by=title';
+    }
+
+    if (sort === 'Id') {
+        sortResult = '?skip=0&limit=30&sort_by=id';
+    }
+
+    if (sort === 'Duration') {
+        sortResult = '?skip=0&limit=30&sort_by=duration';
+    }
+    const res = await fetch(`${BASE_URL}${sortResult}`);
+    if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
 
     const response = await res.json();
-    console.log(response);
+
+    return response;
+};
+
+export const postPrograms = async (inputPost: InputPost) => {
+    const res = await fetch(BASE_URL, {
+        method: 'POST',
+        body: JSON.stringify(inputPost),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const response = await res.json();
+
+    return response;
+};
+
+export const addLike = async ({id}: {id: number}) => {
+    const res = await fetch(`${BASE_URL}${id}/like`, {
+        method: 'POST',
+    });
+
+    const response = await res.json();
 
     return response;
 };

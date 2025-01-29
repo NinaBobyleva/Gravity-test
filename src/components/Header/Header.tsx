@@ -2,13 +2,44 @@ import {Box, Button, Flex, Icon, Modal, TextInput, spacing} from '@gravity-ui/ui
 import {Plus} from '@gravity-ui/icons';
 import './header.scss';
 import {useState} from 'react';
+import {postPrograms} from '../../api/apiPrograms';
+import {CardsData} from '../Main/Main';
+
+export type InputPost = {
+    title: string;
+    description: string;
+    duration_weeks: number;
+    sessions_per_week: number;
+};
 
 export const Header = ({
     setInputSearch,
+    setIsChanged,
 }: {
     setInputSearch: React.Dispatch<React.SetStateAction<string>>;
+    setIsChanged: React.Dispatch<React.SetStateAction<CardsData | null>>;
 }) => {
     const [open, setOpen] = useState(false);
+    const [inputPost, setInputPost] = useState<InputPost>({
+        title: '',
+        description: '',
+        duration_weeks: 0,
+        sessions_per_week: 0,
+    });
+
+    const onChangedInputPost = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {value, name} = e.target;
+        setInputPost({...inputPost, [name]: value});
+    };
+
+    const postProgramsData = () => {
+        if (!inputPost.title) {
+            return;
+        }
+        postPrograms(inputPost).then((data) => {
+            setIsChanged(data);
+        });
+    };
 
     return (
         <Flex width={'1036px'} justifyContent={'space-between'} alignItems={'center'}>
@@ -24,36 +55,42 @@ export const Header = ({
                             <Flex direction={'column'} space={5}>
                                 <TextInput
                                     style={{width: 300}}
-                                    className="modalInput"
                                     size="l"
                                     placeholder="Title"
+                                    name="title"
+                                    onChange={onChangedInputPost}
                                 />
                                 <TextInput
                                     style={{width: 300}}
-                                    className="modalInput"
                                     size="l"
                                     placeholder="Description"
+                                    name="description"
+                                    onChange={onChangedInputPost}
                                 />
                             </Flex>
                             <Flex space={5}>
                                 <TextInput
                                     style={{width: 140}}
-                                    className="modalInputSmall"
                                     size="m"
                                     placeholder="Duration"
+                                    name="duration_weeks"
+                                    onChange={onChangedInputPost}
                                 />
                                 <TextInput
                                     style={{width: 140}}
-                                    className="modalInputSmall"
                                     size="m"
                                     placeholder="Session"
+                                    name="sessions_per_week"
+                                    onChange={onChangedInputPost}
                                 />
                             </Flex>
                             <Button
-                                className="modalButton"
                                 view="action"
                                 size="l"
-                                onClick={() => setOpen(false)}
+                                onClick={() => {
+                                    setOpen(false);
+                                    postProgramsData();
+                                }}
                             >
                                 Submit
                             </Button>
@@ -63,7 +100,7 @@ export const Header = ({
             </Box>
             <Box>
                 <TextInput
-                    className="input"
+                    className="searchInput"
                     type="search"
                     style={{width: 280, height: 42}}
                     size="xl"
