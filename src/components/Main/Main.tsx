@@ -96,13 +96,7 @@ export const Main = () => {
                         </Box>
                         <User
                             className="sideBarUser"
-                            avatar={
-                                <img
-                                    className="menuItemIcon"
-                                    src="./public/icons/ava.png"
-                                    alt="#"
-                                />
-                            }
+                            avatar={<img src="./public/icons/ava.png" alt="#" />}
                             name="Priston Berg"
                             description="Coach"
                             size="m"

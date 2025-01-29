@@ -35,7 +35,7 @@ export const Pagination = ({
                         <Box>
                             <img
                                 onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
-                                className="left"
+                                className="paginationIconLeft"
                                 src="./public/icons/left.svg"
                                 alt="#"
                             />
@@ -44,15 +44,20 @@ export const Pagination = ({
                             <span
                                 key={page}
                                 onClick={() => setCurrentPage(page)}
-                                className={currentPage === page ? 'activePage' : 'page'}
+                                className={
+                                    currentPage === page ? 'activePaginationPage' : 'paginationPage'
+                                }
                             >
                                 {page}
                             </span>
                         ))}
                         {pagesCount > 5 && currentPage <= pagesCount - 1 ? (
                             <Flex space={7}>
-                                <span className="page">...</span>
-                                <span onClick={() => setCurrentPage(pagesCount)} className="page">
+                                <span className="paginationPage">...</span>
+                                <span
+                                    onClick={() => setCurrentPage(pagesCount)}
+                                    className="paginationPage"
+                                >
                                     {' '}
                                     {pagesCount}
                                 </span>
@@ -65,7 +70,7 @@ export const Pagination = ({
                                 onClick={() =>
                                     currentPage < pagesCount && setCurrentPage(currentPage + 1)
                                 }
-                                className="right"
+                                className="paginationIconRight"
                                 src="./public/icons/right.svg"
                                 alt="#"
                             />
@@ -74,7 +79,7 @@ export const Pagination = ({
                 </Box>
                 <Box className="perPageBox">
                     <Flex alignItems={'center'}>
-                        <p className="showText">Show by</p>
+                        <p className="perPageShowText">Show by</p>
                         <Select
                             placeholder="4"
                             view="clear"
