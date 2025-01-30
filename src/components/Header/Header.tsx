@@ -65,6 +65,7 @@ export const Header = ({
                         <Flex direction={'column'} alignItems={'center'} space={5}>
                             <Flex direction={'column'} space={5}>
                                 <TextInput
+                                    type="text"
                                     style={{width: 300}}
                                     size="l"
                                     placeholder="Title"
@@ -72,6 +73,7 @@ export const Header = ({
                                     onChange={onChangedInputPost}
                                 />
                                 <TextInput
+                                    type="text"
                                     style={{width: 300}}
                                     size="l"
                                     placeholder="Description"
@@ -81,6 +83,7 @@ export const Header = ({
                             </Flex>
                             <Flex space={5}>
                                 <TextInput
+                                    type="number"
                                     style={{width: 140}}
                                     size="m"
                                     placeholder="Duration"
@@ -88,6 +91,7 @@ export const Header = ({
                                     onChange={onChangedInputPost}
                                 />
                                 <TextInput
+                                    type="number"
                                     style={{width: 140}}
                                     size="m"
                                     placeholder="Session"
