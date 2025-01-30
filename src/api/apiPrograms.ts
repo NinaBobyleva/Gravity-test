@@ -1,21 +1,20 @@
 import {InputPost} from '../components/Header/Header';
 
-const BASE_URL =
-    'https://cors-anywhere.herokuapp.com/http://85.92.111.183:18181/programs/?skip=0&limit=30';
+const BASE_URL = 'https://cors-anywhere.herokuapp.com/http://85.92.111.183:18181/programs/';
 
 export const getPrograms = async ({sort}: {sort: string}) => {
     let sortResult = '';
 
     if (sort === 'Title') {
-        sortResult = '&sort_by=title';
+        sortResult = '?skip=0&limit=30&sort_by=title';
     }
 
     if (sort === 'Id') {
-        sortResult = '&sort_by=id';
+        sortResult = '?skip=0&limit=30&sort_by=id';
     }
 
     if (sort === 'Duration') {
-        sortResult = '&sort_by=duration';
+        sortResult = '&?skip=0&limit=30sort_by=duration';
     }
     const res = await fetch(`${BASE_URL}${sortResult}`);
     if (!res.ok) {

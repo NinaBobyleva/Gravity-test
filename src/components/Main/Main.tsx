@@ -24,7 +24,7 @@ export const Main = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [count, setCount] = useState(0);
     const [programs, setPrograms] = useState<CardsData[]>([]);
-    const [sort, setSort] = useState<string>('');
+    const [sort, setSort] = useState<string>('Title');
     const [listPrograms, setListPrograms] = useState<CardsData[]>([]);
     const [isChanged, setIsChanged] = useState<CardsData | null>(null);
     const [inputSearch, setInputSearch] = useState('');
