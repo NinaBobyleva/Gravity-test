@@ -14,7 +14,7 @@ export const getPrograms = async ({sort}: {sort: string}) => {
     }
 
     if (sort === 'Duration') {
-        sortResult = '&?skip=0&limit=30sort_by=duration';
+        sortResult = '?skip=0&limit=30&sort_by=duration';
     }
     const res = await fetch(`${BASE_URL}${sortResult}`);
     if (!res.ok) {
