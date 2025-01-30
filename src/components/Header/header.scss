@@ -9,3 +9,8 @@
     --g-text-input-background-color: #ffffff;
     --g-text-input-border-color: #ffffff;
 }
+
+.errorInput {
+    --g-text-input-border-color: #ff0000;
+    color: #ff0000;
+}

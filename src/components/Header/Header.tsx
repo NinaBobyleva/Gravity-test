@@ -24,6 +24,7 @@ export const Header = ({
     setError: React.Dispatch<React.SetStateAction<string>>;
 }) => {
     const [open, setOpen] = useState(false);
+    const [errorInput, setErrorInput] = useState(false);
     const [inputPost, setInputPost] = useState<InputPost>({
         title: '',
         description: '',
@@ -37,12 +38,19 @@ export const Header = ({
     };
 
     const postProgramsData = () => {
-        if (!inputPost.title) {
+        if (
+            !inputPost.title ||
+            !inputPost.description ||
+            !inputPost.duration_weeks ||
+            !inputPost.sessions_per_week
+        ) {
+            setErrorInput(true);
             return;
         }
         postPrograms(inputPost)
             .then((data) => {
                 setIsChanged(data);
+                setOpen(false);
             })
             .catch((error) => {
                 setError(error.message);
@@ -103,12 +111,14 @@ export const Header = ({
                                 view="action"
                                 size="l"
                                 onClick={() => {
-                                    setOpen(false);
                                     postProgramsData();
                                 }}
                             >
                                 Submit
                             </Button>
+                            {errorInput ? (
+                                <span className="errorInput">Введите все данные</span>
+                            ) : null}
                         </Flex>
                     </Modal>
                 </Flex>
