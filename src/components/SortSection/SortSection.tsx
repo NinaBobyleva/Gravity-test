@@ -1,9 +1,14 @@
 import {Box, Flex, Select, Tabs} from '@gravity-ui/uikit';
 // import React from 'react';
-import './sortSelection.scss';
+import './sortSection.scss';
 
-export const SortSection = () => {
+export const SortSection = ({setSort}: {setSort: React.Dispatch<React.SetStateAction<string>>}) => {
     // const [activeTab, setActiveTab] = React.useState('first');
+
+    const handleUpdate = (value: string[]) => {
+        setSort(String(value));
+    };
+
     return (
         <Box>
             <Flex justifyContent={'space-between'}>
@@ -20,25 +25,27 @@ export const SortSection = () => {
                 />
                 <Flex className="selectBox" alignItems={'end'}>
                     <Flex alignItems={'center'}>
-                        <p className="textSelect">Sort by</p>
+                        <p className="selectText">Sort by</p>
                         <Select
                             className="select"
-                            placeholder="New"
-                            popupClassName="popupSelect"
+                            placeholder="Title"
+                            popupClassName="selectPopup"
                             view="clear"
                             width={70}
                             options={[
-                                {value: 'val_1', content: 'New'},
-                                {value: 'val_2', content: 'Old'},
+                                {value: 'Title', content: 'Title'},
+                                {value: 'Id', content: 'Id'},
+                                {value: 'Duration', content: 'Duration'},
                             ]}
+                            onUpdate={handleUpdate}
                         />
                     </Flex>
                     <Flex alignItems={'center'}>
-                        <p className="textSelect">Language</p>
+                        <p className="selectText">Language</p>
                         <Select
                             className="select"
                             placeholder="En"
-                            popupClassName="popupSelect"
+                            popupClassName="selectPopup"
                             view="clear"
                             width={60}
                             options={[

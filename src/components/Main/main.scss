@@ -1,10 +1,10 @@
-.bg {
-    --gn-aside-header-background-color: #ffffff;
-}
-
-.sideBarCard {
+.sideBarImg {
     margin-top: 24px;
     margin-left: 24px;
+}
+
+.sideBarMenuItem {
+    padding-top: 24px;
 }
 
 .sideBarProgressBox {
@@ -34,13 +34,24 @@
 
 .sideBarUser {
     padding-top: 18px;
-    padding-left: 16px;
 }
 
 .mainBox {
     padding-top: 24px;
 }
 
+.mainBoxLoad {
+    padding-top: 170px;
+}
+
 .paginationBox {
     margin-top: 118px;
+    margin-left: 344px;
+}
+
+.error {
+    color: #ff0000;
+    font-weight: 700;
+    font-size: 18px;
+    padding-top: 80px;
 }

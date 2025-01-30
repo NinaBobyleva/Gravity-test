@@ -1,24 +1,33 @@
-.paginationBox {
-    margin-left: 344px;
-}
-
-.left {
+.paginationIconLeft {
     padding-top: 5px;
+    cursor: pointer;
 }
 
-.page {
+.paginationIconRight {
+    cursor: pointer;
+}
+
+.paginationPage {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
     text-align: center;
     color: #a5a5a8;
+    cursor: pointer;
+}
+
+.activePaginationPage {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #1a1b1d;
 }
 
 .perPageBox {
     margin-left: 205px;
 }
 
-.showText {
+.perPageShowText {
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;

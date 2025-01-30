@@ -16,10 +16,10 @@
     "jsx": "react-jsx",
     "incremental": true,
     "allowSyntheticDefaultImports": true,
-    "paths": {
-      "@/*": ["./src/*"]
-  }
+  //   "paths": {
+  //     "@/*": ["./src/*"]
+  // }
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/utils/createPages.js"],
+  "include": ["**/*.ts", "**/*.tsx", "src/utils/createPages.js", "src/api/apiPrograms.ts"],
   "exclude": ["node_modules"]
 }

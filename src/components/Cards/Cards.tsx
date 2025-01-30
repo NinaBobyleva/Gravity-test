@@ -1,73 +1,32 @@
 import {Box, Card, Flex} from '@gravity-ui/uikit';
-// import watch from './stopwatch.svg';
 import './cards.scss';
 import {UserData} from '../UserData/UserData';
 import {ProgressBox} from '../ProgressBox/ProgressBox';
 import {LikeBox} from '../LikeBox/LikeBox';
+import {CardsData} from '../Main/Main';
 
-export const Cards = () => {
-    const dataCards = [
-        {
-            id: 1,
-            nik: 'Attentive Iguana',
-            title: 'Public',
-            userData: 'Ashley Addams, 12.23.2020',
-            date: '',
-            description:
-                'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
-            duration: '3 week',
-            sessions: '3 per/week',
-            isLiked: false,
-        },
-        {
-            id: 3,
-            nik: 'Attentive Iguana',
-            title: 'Public',
-            userData: 'Ashley Addams, 12.23.2020',
-            date: '',
-            description:
-                'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
-            duration: '3 week',
-            sessions: '3 per/week',
-            isLiked: false,
-        },
-        {
-            id: 3,
-            nik: 'Attentive Iguana',
-            title: 'Public',
-            userData: 'Ashley Addams, 12.23.2020',
-            date: '',
-            description:
-                'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
-            duration: '3 week',
-            sessions: '3 per/week',
-            isLiked: false,
-        },
-        {
-            id: 4,
-            nik: 'Attentive Iguana',
-            title: 'Public',
-            userData: 'Ashley Addams, 12.23.2020',
-            date: '',
-            description:
-                'Amet minim mollit non deserunt ullamco est sit aliqua dolor doAmet minim mollit non',
-            duration: '3 week',
-            sessions: '3 per/week',
-            isLiked: false,
-        },
-    ];
-
+export const Cards = ({
+    programs,
+    setIsChanged,
+    setIsLoad,
+    setError,
+}: {
+    programs: CardsData[];
+    setIsChanged: React.Dispatch<React.SetStateAction<CardsData | null>>;
+    setIsLoad: React.Dispatch<React.SetStateAction<boolean>>;
+    setError: React.Dispatch<React.SetStateAction<string>>;
+}) => {
     const style = {
         width: '1036px',
         height: '102px',
     };
+
     return (
         <Box className="wrapper">
-            <Flex direction={'column'} space={2}>
-                {dataCards.map((el) => (
+            <Flex direction={'column'} space={2} width={1036} height={432}>
+                {programs.map((el) => (
                     <Card
-                        content={el.nik}
-                        className="card"
+                        className="cardWrapper"
                         style={style}
                         view="clear"
                         type="container"
@@ -76,15 +35,24 @@ export const Cards = () => {
                         <Flex justifyContent={'space-between'}>
                             <Box>
                                 <Flex className="cardsBox">
-                                    <UserData nik={el.nik} userData={el.userData} />
+                                    <UserData title={el.title} />
                                     <Box width={224}>
-                                        <span className="desk">{el.description}</span>
+                                        <span className="cardDesk">{el.description}</span>
                                     </Box>
-                                    <ProgressBox duration={el.duration} sessions={el.sessions} />
+                                    <ProgressBox
+                                        duration={el.duration_weeks}
+                                        sessions={el.sessions_per_week}
+                                    />
                                 </Flex>
                             </Box>
                             <Box>
-                                <LikeBox />
+                                <LikeBox
+                                    id={el.id}
+                                    setIsChanged={setIsChanged}
+                                    isLiked={el.liked}
+                                    setIsLoad={setIsLoad}
+                                    setError={setError}
+                                />
                             </Box>
                         </Flex>
                     </Card>

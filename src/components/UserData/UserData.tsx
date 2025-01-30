@@ -1,7 +1,7 @@
 import {Box, Card, Flex} from '@gravity-ui/uikit';
 import './userData.scss';
 
-export const UserData = ({nik, userData}: {nik: string; userData: string}) => {
+export const UserData = ({title}: {title: string}) => {
     const style = {
         width: '69px',
         height: '22px',
@@ -13,18 +13,18 @@ export const UserData = ({nik, userData}: {nik: string; userData: string}) => {
         border: 'none',
     };
     return (
-        <Box width={205} className="userDataBox">
+        <Box width={207} className="userDataBox">
             <Flex space={2} direction={'column'}>
                 <Box height={24}>
-                    <Flex alignItems={'center'} space={2}>
-                        <span className="title">{nik}</span>
+                    <Flex alignItems={'center'} justifyContent={'space-between'} space={2}>
+                        <span className="userTitle">{title}</span>
                         <Card className="public" style={style}>
                             Public
                         </Card>
                     </Flex>
                 </Box>
                 <Box height={18}>
-                    <p>{userData}</p>
+                    <p className="userText">Ashley Addams, 12.23.2020</p>
                 </Box>
             </Flex>
         </Box>

@@ -1,13 +1,53 @@
-.menuItemBox {
-    padding-top: 24px;
-    padding-left: 24px;
-    gap: 12px;
+.menuItemActive {
+    position: relative;
+    z-index: 0;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 13px;
+        left: 11px;
+        background: #fe5e00;
+        width: 56px;
+        height: 42px;
+        border-radius: 0px 20px 20px 0px;
+        opacity: 20%;
+        z-index: -1;
+    }
 }
 
-.title {
+.menuItemIcon {
+    padding-left: 24px;
+}
+
+.menuItemMessage {
+    position: relative;
+    &::after {
+        content: '12';
+        color: #fff;
+        padding-left: 5px;
+        position: absolute;
+        top: 0px;
+        right: -30px;
+        width: 18px;
+        height: 18px;
+        background: #ff4848;
+        border-radius: 7px;
+        z-index: 1;
+    }
+}
+
+.menuItemTitle {
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
     text-align: left;
     color: #a5a5a8;
+}
+
+.menuItemTitleActive {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+    color: #000;
 }

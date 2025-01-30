@@ -32,6 +32,7 @@
     "lint:prettier": "prettier --check '**/*.md'",
     "lint": "npm run lint:js && npm run lint:styles && npm run lint:prettier",
     "test": "exit 0"
+
   },
   "dependencies": {
     "@gravity-ui/navigation": "^2.27.0",
