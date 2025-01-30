@@ -8,15 +8,26 @@ export const LikeBox = ({
     id,
     isLiked,
     setIsChanged,
+    setIsLoad,
+    setError,
 }: {
     id: number;
     isLiked: boolean;
     setIsChanged: React.Dispatch<React.SetStateAction<CardsData | null>>;
+    setIsLoad: React.Dispatch<React.SetStateAction<boolean>>;
+    setError: React.Dispatch<React.SetStateAction<string>>;
 }) => {
     const handleLike = () => {
-        addLike({id}).then((data) => {
-            setIsChanged(data);
-        });
+        addLike({id})
+            .then((data) => {
+                setIsChanged(data);
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => {
+                setIsLoad(false);
+            });
     };
     return (
         <Flex direction={'column'} className="likeBox">

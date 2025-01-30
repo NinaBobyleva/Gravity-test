@@ -8,9 +8,13 @@ import {CardsData} from '../Main/Main';
 export const Cards = ({
     programs,
     setIsChanged,
+    setIsLoad,
+    setError,
 }: {
     programs: CardsData[];
     setIsChanged: React.Dispatch<React.SetStateAction<CardsData | null>>;
+    setIsLoad: React.Dispatch<React.SetStateAction<boolean>>;
+    setError: React.Dispatch<React.SetStateAction<string>>;
 }) => {
     const style = {
         width: '1036px',
@@ -46,6 +50,8 @@ export const Cards = ({
                                     id={el.id}
                                     setIsChanged={setIsChanged}
                                     isLiked={el.liked}
+                                    setIsLoad={setIsLoad}
+                                    setError={setError}
                                 />
                             </Box>
                         </Flex>

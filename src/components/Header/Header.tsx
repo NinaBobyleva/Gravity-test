@@ -15,9 +15,13 @@ export type InputPost = {
 export const Header = ({
     setInputSearch,
     setIsChanged,
+    setIsLoad,
+    setError,
 }: {
     setInputSearch: React.Dispatch<React.SetStateAction<string>>;
     setIsChanged: React.Dispatch<React.SetStateAction<CardsData | null>>;
+    setIsLoad: React.Dispatch<React.SetStateAction<boolean>>;
+    setError: React.Dispatch<React.SetStateAction<string>>;
 }) => {
     const [open, setOpen] = useState(false);
     const [inputPost, setInputPost] = useState<InputPost>({
@@ -36,9 +40,16 @@ export const Header = ({
         if (!inputPost.title) {
             return;
         }
-        postPrograms(inputPost).then((data) => {
-            setIsChanged(data);
-        });
+        postPrograms(inputPost)
+            .then((data) => {
+                setIsChanged(data);
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => {
+                setIsLoad(false);
+            });
     };
 
     return (

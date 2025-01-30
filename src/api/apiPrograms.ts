@@ -1,24 +1,25 @@
 import {InputPost} from '../components/Header/Header';
 
-const BASE_URL = 'https://cors-anywhere.herokuapp.com/http://85.92.111.183:18181/programs/';
+const BASE_URL =
+    'https://cors-anywhere.herokuapp.com/http://85.92.111.183:18181/programs/?skip=0&limit=30';
 
 export const getPrograms = async ({sort}: {sort: string}) => {
     let sortResult = '';
 
     if (sort === 'Title') {
-        sortResult = '?skip=0&limit=30&sort_by=title';
+        sortResult = '&sort_by=title';
     }
 
     if (sort === 'Id') {
-        sortResult = '?skip=0&limit=30&sort_by=id';
+        sortResult = '&sort_by=id';
     }
 
     if (sort === 'Duration') {
-        sortResult = '?skip=0&limit=30&sort_by=duration';
+        sortResult = '&sort_by=duration';
     }
     const res = await fetch(`${BASE_URL}${sortResult}`);
     if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
+        throw new Error('Что-то пошло не так');
     }
 
     const response = await res.json();
@@ -35,6 +36,10 @@ export const postPrograms = async (inputPost: InputPost) => {
         },
     });
 
+    if (!res.ok) {
+        throw new Error('Что-то пошло не так');
+    }
+
     const response = await res.json();
 
     return response;
@@ -44,6 +49,10 @@ export const addLike = async ({id}: {id: number}) => {
     const res = await fetch(`${BASE_URL}${id}/like`, {
         method: 'POST',
     });
+
+    if (!res.ok) {
+        throw new Error('Что-то пошло не так');
+    }
 
     const response = await res.json();
 

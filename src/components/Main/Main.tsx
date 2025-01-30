@@ -24,10 +24,11 @@ export const Main = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [count, setCount] = useState(0);
     const [programs, setPrograms] = useState<CardsData[]>([]);
-    const [sort, setSort] = useState<string>('Title');
+    const [sort, setSort] = useState<string>('');
     const [listPrograms, setListPrograms] = useState<CardsData[]>([]);
     const [isChanged, setIsChanged] = useState<CardsData | null>(null);
     const [inputSearch, setInputSearch] = useState('');
+    const [errorText, setError] = useState('');
 
     useEffect(() => {
         const getProgramsData = async () => {
@@ -39,7 +40,7 @@ export const Main = () => {
                     setCount(res.length);
                 })
                 .catch((error) => {
-                    console.log(error);
+                    setError(error.message);
                 })
                 .finally(() => {
                     setIsLoad(false);
@@ -112,24 +113,42 @@ export const Main = () => {
                         />
                     </Card>
                     <Box className="mainBox">
-                        <Header setInputSearch={setInputSearch} setIsChanged={setIsChanged} />
+                        <Header
+                            setInputSearch={setInputSearch}
+                            setIsChanged={setIsChanged}
+                            setIsLoad={setIsLoad}
+                            setError={setError}
+                        />
                         <SortSection setSort={setSort} />
-                        {isLoad ? (
-                            <Flex justifyContent={'center'} alignItems={'center'}>
-                                <Loader className="mainBoxLoad" />
+                        {errorText ? (
+                            <Flex justifyContent={'center'} className="error">
+                                {errorText}
                             </Flex>
                         ) : (
                             <>
-                                <Cards programs={quantityPerPage} setIsChanged={setIsChanged} />
-                                <Flex justifyContent={'center'} className="paginationBox">
-                                    <Pagination
-                                        perPage={perPage}
-                                        currentPage={currentPage}
-                                        setCurrentPage={setCurrentPage}
-                                        setPerPage={setPerPage}
-                                        count={count}
-                                    />
-                                </Flex>
+                                {isLoad ? (
+                                    <Flex justifyContent={'center'} alignItems={'center'}>
+                                        <Loader className="mainBoxLoad" />
+                                    </Flex>
+                                ) : (
+                                    <>
+                                        <Cards
+                                            programs={quantityPerPage}
+                                            setIsChanged={setIsChanged}
+                                            setIsLoad={setIsLoad}
+                                            setError={setError}
+                                        />
+                                        <Flex justifyContent={'center'} className="paginationBox">
+                                            <Pagination
+                                                perPage={perPage}
+                                                currentPage={currentPage}
+                                                setCurrentPage={setCurrentPage}
+                                                setPerPage={setPerPage}
+                                                count={count}
+                                            />
+                                        </Flex>
+                                    </>
+                                )}
                             </>
                         )}
                     </Box>
