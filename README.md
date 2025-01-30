@@ -1,40 +1,38 @@
-# gravity-ui-vite-example
+Тестовое задание
 
-Vite template with: typescript, sass and Gravity UI.
+## Ссылка на приложение: (https://gravity-test48.netlify.app/)
 
-## ⚗️ Technologies list
+## Установка
 
-- [Gravity UI](https://gravity-ui.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Sass](https://sass-lang.com/)
-- [ESlint](https://eslint.org/) & [Prettier](https://prettier.io/)
-
-# 🚀 Start using it
-
-To use this template for your app you can run:
+Склонируйте репозиторий и установите зависимости
 
 ```sh
-npx degit gravity-ui/gravity-ui-vite-example#main my-project
-cd my-project
-
 npm install
+```
+
+Для запуска в development режиме выполните команду
+
+```sh
 npm run dev
 ```
 
-or
+Приложение будет доступно по адресу: (http://localhost:5173/)
+
+При необходимости production сборки выполните команду
 
 ```sh
-yarn degit gravity-ui-vite-example#main my-project
-cd my-project
-
-npm install
-npm run dev
+npm run build
 ```
 
-# 📖 Learn More
+## Описание:
 
-This package includes scripts and configuration used by [Vite](https://vitejs.dev/).\
-Please refer to its documentation:
+- В этом проекте реализован функционал для добавления программ тренировок. На странице есть возможность поставить лайк, добавить новую программу, отсортировать по title, id и duration. Также присутствует пагинация и реализован поиск. При возникновении ошибки на экран выводиться стилизованный текст ошибки.
 
-- [Getting Started](https://vitejs.dev/guide/) – How to create a new app.
-- [User Guide](https://vitejs.dev/) – How to develop apps bootstrapped with Vite.
+### Технический стек приложения
+
+- React.js
+- TypeScript
+- Gravity UI
+- ESlint
+- Stylelint
+- Netlify

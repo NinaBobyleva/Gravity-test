@@ -81,7 +81,7 @@ export const Main = () => {
             <Box>
                 <Flex space={6}>
                     <Card style={style}>
-                        <img className="sideBarImg" src="./public/icons/logo.png" alt="#" />
+                        <img className="sideBarImg" src="./icons/logo.png" alt="#" />
                         {menuData.map((el) => (
                             <Box key={el.id} className="sideBarMenuItem">
                                 <MenuItem
@@ -106,7 +106,7 @@ export const Main = () => {
                         </Box>
                         <User
                             className="sideBarUser"
-                            avatar={<img src="./public/icons/ava.png" alt="#" />}
+                            avatar={<img src="./icons/ava.png" alt="#" />}
                             name="Priston Berg"
                             description="Coach"
                             size="m"

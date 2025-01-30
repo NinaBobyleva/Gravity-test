@@ -118,11 +118,7 @@ export const Header = ({
                     placeholder="Search programs"
                     onChange={(e) => setInputSearch(e.target.value)}
                     leftContent={
-                        <img
-                            className={spacing({ml: 2, mr: 2})}
-                            src="./public/icons/search.svg"
-                            alt=""
-                        />
+                        <img className={spacing({ml: 2, mr: 2})} src="./icons/search.svg" alt="" />
                     }
                 />
             </Box>

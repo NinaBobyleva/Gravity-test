@@ -36,7 +36,7 @@ export const Pagination = ({
                             <img
                                 onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
                                 className="paginationIconLeft"
-                                src="./public/icons/left.svg"
+                                src="./icons/left.svg"
                                 alt="#"
                             />
                         </Box>
@@ -71,7 +71,7 @@ export const Pagination = ({
                                     currentPage < pagesCount && setCurrentPage(currentPage + 1)
                                 }
                                 className="paginationIconRight"
-                                src="./public/icons/right.svg"
+                                src="./icons/right.svg"
                                 alt="#"
                             />
                         </Box>

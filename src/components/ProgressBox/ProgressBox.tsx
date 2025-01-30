@@ -7,7 +7,7 @@ export const ProgressBox = ({duration, sessions}: {duration: number; sessions: n
             <Box height={30}>
                 <Flex alignItems={'center'} space={1}>
                     <Box>
-                        <img className="progressImg" src="./public/icons/alarm.svg" alt="#" />
+                        <img className="progressImg" src="./icons/alarm.svg" alt="#" />
                     </Box>
                     <Box>
                         <Flex direction={'column'}>
@@ -20,7 +20,7 @@ export const ProgressBox = ({duration, sessions}: {duration: number; sessions: n
             <Box height={30}>
                 <Flex alignItems={'center'} space={1}>
                     <Box>
-                        <img className="progressImg" src="./public/icons/calendar.svg" alt="#" />
+                        <img className="progressImg" src="./icons/calendar.svg" alt="#" />
                     </Box>
                     <Box>
                         <Flex direction={'column'}>

@@ -32,7 +32,7 @@ export const LikeBox = ({
     return (
         <Flex direction={'column'} className="likeBox">
             <Box>
-                <img src="./public/icons/menu.svg" alt="" />
+                <img src="./icons/menu.svg" alt="" />
             </Box>
             <Box onClick={handleLike}>
                 <Icon
